@@ -24,7 +24,7 @@
                         }" (click)="verDetalle(registro)">
         <ng-container *ngIf="registro.velocidad >= (limite - limite*0.15)">    
               <th scope="row">{{ i }}</th>
-              <td>{{ registro.fecha }}</td>
+              <td>{{ registro.fecha | date: 'mediumDate' }}</td>
               <td>{{ registro.velocidad }} Km/h</td>
               <td>{{ registro.patente }}</td> 
         </ng-container>       

@@ -7,12 +7,14 @@ import { TablaComponent } from './tabla/tabla.component';
 
 import { FormsModule } from '@angular/forms';
 import { DetalleComponent } from './detalle/detalle.component';
+import { MayusculaPipe } from './mayuscula.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     TablaComponent,
-    DetalleComponent
+    DetalleComponent,
+    MayusculaPipe
   ],
   imports: [
     BrowserModule,
