@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { element } from '@angular/core/src/render3';
 
 @Component({
   selector: 'app-tabla',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablaComponent implements OnInit {
 
-  datos = [ 
+  datos:Array<any> = [ 
     { "fecha": "2019-05-01", "modelo": "Ford Ka" , "velocidad": 100 , "patente": "AA 456 AA" },
     { "fecha": "2019-06-01", "modelo": "Toyota Etios" , "velocidad": 110 , "patente": "PA 456 AB" },
     { "fecha": "2019-07-02", "modelo": "Volkswagen Gol" , "velocidad": 130 , "patente": "AA 456 AC" },
@@ -21,11 +22,16 @@ export class TablaComponent implements OnInit {
     { "fecha": "2019-11-05", "modelo": "Toyota Hilux" , "velocidad": 85 , "patente": "AA 459 FR" },
     { "fecha": "2019-03-11", "modelo": "Renault Nuevo Sandero" , "velocidad": 75 , "patente": "AA 477 GG" },
     { "fecha": "2019-02-10", "modelo": "Toyota Etios" , "velocidad": 100 , "patente": "AA 499 FF" },
-  ]
+  ].sort(
+    (a,b)=> { 
+      return (a.velocidad > b.velocidad)? -1:1
+    });
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() { 
+    console.log("Constructor"); 
   }
 
+  ngOnInit() {
+    console.log("ngOnInit");
+  }
 }
