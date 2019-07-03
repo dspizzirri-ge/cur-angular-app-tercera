@@ -1,26 +1,35 @@
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Modelo</th>
-      <th scope="col">Velocidad</th>
-      <th scope="col">Patente</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let registro of datos; let i = index"
-    [ngClass]="{
-            'text-danger':registro.velocidad >= 100,
-            'text-warning':registro.velocidad > 80
-                    }" >
-    <ng-container *ngIf="registro.velocidad >= 80">    
-          <th scope="row">{{ i }}</th>
-          <td>{{ registro.fecha }}</td>
-          <td>{{ registro.modelo }}</td>
-          <td>{{ registro.velocidad }} Km/h</td>
-          <td>{{ registro.patente }}</td> 
-    </ng-container>       
-    </tr>
-  </tbody>
-</table>    
+<div class="container row">
+  <div class="col-6">
+    <label for="limite"> Limite velocidad </label>
+    <input name="limite" [(ngModel)]="limite" type="number">
+
+    <app-detalle [detalle]="detalleRegistro" ></app-detalle>
+  </div>
+
+  <div class="col-6">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Velocidad</th>
+          <th scope="col">Patente</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of datos; let i = index"
+        [ngClass]="{
+                'text-danger':registro.velocidad >= limite,
+                'text-warning':registro.velocidad > (limite - limite*0.15)
+                        }" (click)="verDetalle(registro)">
+        <ng-container *ngIf="registro.velocidad >= (limite - limite*0.15)">    
+              <th scope="row">{{ i }}</th>
+              <td>{{ registro.fecha }}</td>
+              <td>{{ registro.velocidad }} Km/h</td>
+              <td>{{ registro.patente }}</td> 
+        </ng-container>       
+        </tr>
+      </tbody>
+    </table>    
+  </div>
+</div>
