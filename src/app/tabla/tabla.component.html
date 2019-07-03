@@ -1,0 +1,20 @@
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Velocidad</th>
+      <th scope="col">Patente</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let registro of datos; let i = index">
+      <th scope="row">{{ i }}</th>
+      <td>{{ registro.fecha }}</td>
+      <td>{{ registro.modelo }}</td>
+      <td>{{ registro.velocidad }} Km/h</td>
+      <td>{{ registro.patente }}</td>
+    </tr>
+  </tbody>
+</table>    
