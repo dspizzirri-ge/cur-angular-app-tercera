@@ -1,13 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Infracciones } from './infracciones';
+import { Infraccion } from './infraccion';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InfraccionesService {
 
-  infracciones:Array<any>
+  infracciones:Array<Infraccion> = [];
   constructor() { 
-    this.infracciones = [ 
+    const infracciones = [ 
       { "fecha": "2019-05-01", "detalles":{ "modelo": "Ford Ka", "calle": "Riobamba 2123" }, "velocidad": 100 , "patente": "AA 456 AA" },
       { "fecha": "2019-06-01", "detalles":{ "modelo": "Toyota Etios", "calle": "Riobamba 2123" }, "velocidad": 110 , "patente": "PA 456 AB" },
       { "fecha": "2019-07-02", "detalles":{ "modelo": "Volkswagen Gol", "calle": "Riobamba 2123" }, "velocidad": 130 , "patente": "AA 456 AC" },
@@ -22,9 +24,15 @@ export class InfraccionesService {
       { "fecha": "2019-03-11", "detalles":{ "modelo": "Renault Nuevo Sandero", "calle": "Riobamba 2123" }, "velocidad": 75 , "patente": "AA 477 GG" },
       { "fecha": "2019-02-10", "detalles":{ "modelo": "Toyota Etios", "calle": "Riobamba 2123" }, "velocidad": 100 , "patente": "AA 499 FF" },
     ]
+
+    infracciones.forEach(element => {
+      const infraccion = new Infraccion(element.fecha, element.detalles, element.velocidad, element.patente);
+      this.infracciones.push(infraccion);
+    });
+
   }
 
-  getInfracciones():Array<any>{
+  getInfracciones():Array<Infraccion>{
     return this.infracciones
   }
 

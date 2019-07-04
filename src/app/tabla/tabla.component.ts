@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InfraccionesService } from '../infracciones.service';
+import { Infracciones } from '../infracciones';
+import { DetalleInfracciones } from '../detalle-infracciones';
 
 @Component({
   selector: 'app-tabla',
@@ -8,16 +10,16 @@ import { InfraccionesService } from '../infracciones.service';
 })
 export class TablaComponent implements OnInit {
 
-  datos:Array<any>
+  datos:Array<Infracciones>
   
   limite:number = 0;
-  detalleRegistro:any;
+  detalleRegistro:DetalleInfracciones;
 
   constructor(private infracciones: InfraccionesService) { 
-    
+
     console.log("Constructor"); 
     this.datos = this.infracciones.getInfracciones()
-      .sort((a,b)=> {return a.velocidad > b.velocidad? -1:1});
+      .sort((a:Infracciones,b:Infracciones)=> {return a.velocidad > b.velocidad? -1:1});
   }
 
   ngOnInit() {
