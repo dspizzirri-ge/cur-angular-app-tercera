@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InfraccionesService } from '../infracciones.service';
 import { Infracciones } from '../infracciones';
 import { DetalleInfracciones } from '../detalle-infracciones';
+import { Infraccion } from '../infraccion';
 
 @Component({
   selector: 'app-tabla',
@@ -18,8 +19,15 @@ export class TablaComponent implements OnInit {
   constructor(private infracciones: InfraccionesService) { 
 
     console.log("Constructor"); 
-    this.datos = this.infracciones.getInfracciones()
-      .sort((a:Infracciones,b:Infracciones)=> {return a.velocidad > b.velocidad? -1:1});
+    this.infracciones.getInfracciones()
+      .subscribe(data => {
+        data.sort((a:Infracciones,b:Infracciones)=> {return a.velocidad > b.velocidad? -1:1});
+        this.datos = data;
+        data.forEach(element => {
+          const infraccion = new Infraccion(element.fecha, element.detalles, element.velocidad, element.patente);
+          this.datos.push(infraccion);
+        });
+      });
   }
 
   ngOnInit() {

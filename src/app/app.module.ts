@@ -8,6 +8,7 @@ import { TablaComponent } from './tabla/tabla.component';
 import { FormsModule } from '@angular/forms';
 import { DetalleComponent } from './detalle/detalle.component';
 import { MayusculaPipe } from './mayuscula.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { MayusculaPipe } from './mayuscula.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
