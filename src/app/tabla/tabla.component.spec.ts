@@ -54,20 +54,19 @@ describe('TablaComponent', () => {
     expect(filasAMostrar).toBe(filasTablaHTMLAMostrar); 
   });
 
-  /*
-  it("Las filas con velocidad mayor o igual a 100 deben tener las clase 'text-danger'", ()=>{
+  it("La tabla deberia mostrar las filas con velocidad mayor o igual a 100 con la clase text-danger si el limite es 100", () => {
 
-    const filasTextDanger:number = fixture.debugElement.queryAll(By.css(".text-danger")).length;
-    const filasTextDangerComponent:number = component.datos.filter( fila => fila.velocidad >= 100 ).length;
-    expect(filasTextDanger).toBe(filasTextDangerComponent);
-  });
-  */
-  /*
-  it("Las filas con velocidad mayor a 80 y menor a 100 deben tener las clase 'text-warning'", ()=>{
+    const HTMLInputLimite = fixture.debugElement.query(By.css("input[name=limite]")).nativeElement;
+    
+    HTMLInputLimite.value = 100
+    HTMLInputLimite.dispatchEvent(new Event('input'));
+    fixture.detectChanges();
 
-    const filasTextWarning:number = fixture.debugElement.queryAll(By.css(".text-warning")).length;
-    const filasTextWarningComponent:number = component.datos.filter( fila => fila.velocidad < 100 && fila.velocidad > 80 ).length;
-    expect(filasTextWarning).toBe(filasTextWarningComponent);
+    const filasAMostrar:number = component.datos.filter( fila => fila.velocidad >= 100 ).length;
+    
+    const filasTablaHTML:DebugElement[] = fixture.debugElement.queryAll(By.css(".text-danger"));
+    const filasTablaHTMLAMostrar:number = filasTablaHTML.filter( fila => fila.children.length > 0).length;
+
+    expect(filasAMostrar).toBe(filasTablaHTMLAMostrar); 
   });
-  */
 });
