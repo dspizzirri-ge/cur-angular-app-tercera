@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { TablaComponent } from './tabla.component';
+import { DebugElement } from '@angular/core';
 
 describe('TablaComponent', () => {
   let component: TablaComponent;
@@ -45,5 +46,15 @@ describe('TablaComponent', () => {
     const filasTextWarning:number = fixture.debugElement.queryAll(By.css(".text-warning")).length;
     const filasTextWarningComponent:number = component.datos.filter( fila => fila.velocidad < 100 && fila.velocidad > 80 ).length;
     expect(filasTextWarning).toBe(filasTextWarningComponent);
+  });
+
+  it('Las filas con velocidad menor 80 no se deben mostra en la tabla', ()=>{
+    const filasVelocidadMenor80: number = component.datos.filter( fila => fila.velocidad < 80 ).length;
+    const filaCabecera:number = 1;
+    const filasAMostrar: number = component.datos.length - filasVelocidadMenor80 + filaCabecera;
+    const filasTablaHTML:DebugElement[] = fixture.debugElement.queryAll(By.css("tr"));
+    const filasTablaHTMLMayor80: number = filasTablaHTML.filter( fila => fila.children.length > 0).length;
+
+    expect(filasAMostrar).toBe(filasTablaHTMLMayor80);
   });
 });
