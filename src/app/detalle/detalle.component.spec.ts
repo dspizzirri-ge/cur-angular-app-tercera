@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetalleComponent } from './detalle.component';
+import { MayusculaPipe } from '../mayuscula.pipe';
 
 describe('DetalleComponent', () => {
   let component: DetalleComponent;
@@ -8,7 +9,7 @@ describe('DetalleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DetalleComponent ]
+      declarations: [ DetalleComponent, MayusculaPipe ]
     })
     .compileComponents();
   }));
