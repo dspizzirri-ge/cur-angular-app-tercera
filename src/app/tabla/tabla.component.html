@@ -12,7 +12,7 @@
     <tr *ngFor="let registro of datos; let i = index"
     [ngClass]="{
             'text-danger':registro.velocidad >= 100,
-            'text-warning':registro.velocidad > 80
+            'text-warning':registro.velocidad > 80 && registro.velocidad &lt; 100
                     }" >
     <ng-container *ngIf="registro.velocidad >= 80">    
           <th scope="row">{{ i }}</th>
