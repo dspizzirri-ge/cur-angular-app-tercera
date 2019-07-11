@@ -10,11 +10,10 @@ export class InfraccionesService {
 
   infracciones:Array<Infraccion> = [];
   constructor(private http:HttpClient) { 
-  
+
   }
 
   getInfracciones():Observable<any>{
     return this.http.get("../assets/infracciones/072019/data.json");
   }
-
 }

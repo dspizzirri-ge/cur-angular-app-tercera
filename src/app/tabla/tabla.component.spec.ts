@@ -4,6 +4,20 @@ import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MayusculaPipe } from '../mayuscula.pipe';
+import { InfraccionesService } from '../infracciones.service';
+import { Observable, of } from 'rxjs';
+
+class InfraccionesServiceStub{
+
+  getInfracciones():Observable<any>{
+    return of([
+      { "fecha": "2019-02-09", "detalles":{ "modelo": "Renault Kwid", "calle": "Riobamba 2123" }, "velocidad": 80 , "patente": "NA 456 AF" },
+      { "fecha": "2019-03-16", "detalles":{ "modelo": "Volkswagen Amarok", "calle": "Riobamba 2123" }, "velocidad": 70 , "patente": "AA 456 AG" },
+      { "fecha": "2019-05-17", "detalles":{ "modelo": "Peugeot 208", "calle": "Riobamba 2123" }, "velocidad": 90 , "patente": "AY 458 AA" },
+      { "fecha": "2019-06-02", "detalles":{ "modelo": "Fiat Cronos", "calle": "Riobamba 2123" }, "velocidad": 110 , "patente": "HA 458 YT" },
+    ])
+  }
+}
 
 describe('TablaComponent', () => {
   let component: TablaComponent;
@@ -13,7 +27,8 @@ describe('TablaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ TablaComponent, MayusculaPipe ],
       imports: [ FormsModule ],
-      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
+      providers: [ { provide: InfraccionesService, useClass: InfraccionesServiceStub } ]
     })
     .compileComponents();
   }));
@@ -33,7 +48,7 @@ describe('TablaComponent', () => {
     const lineasObjetoDatos = component.datos.length;
     const lineaCabecera = 1;
     const lineasTablaEnHTML = fixture.debugElement.queryAll(By.css("tr")).length;
-
+    
     expect(lineasObjetoDatos + lineaCabecera).toBe(lineasTablaEnHTML);
 
   });
