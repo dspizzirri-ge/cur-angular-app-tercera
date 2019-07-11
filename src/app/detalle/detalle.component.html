@@ -1,10 +1,11 @@
 <div class="jumbotron">
     <h1 class="display-4">Detalles</h1>
-    <p class="lead"> Fecha: {{ detalle?.fecha }} </p>
-    <p> Velocidad: {{ detalle?.velocidad }} </p>
-    <span> Patente: {{ detalle?.patente }} </span>
-    
+    <p id="detalle-fecha" class="lead"> Fecha: {{ detalle?.fecha }} </p>
+    <p id="detalle-velocidad"> Velocidad: {{ detalle?.velocidad }} </p>
+    <span id="detalle-patente"> Patente: {{ detalle?.patente }} </span>
+
     <hr class="my-4">
-        Modelo: {{ detalle?.detalles.modelo | mayuscula }} <br>
-        Calle: {{ detalle?.detalles.calle | mayuscula }}
+    <span *ngIf="detalle" id="detalle-modelo"> Modelo: {{ detalle?.detalles.modelo | mayuscula }} </span>
+    <br>
+    <span *ngIf="detalle" id="detalle-calle"> Calle: {{ detalle?.detalles.calle | mayuscula }} </span>
 </div>
