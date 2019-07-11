@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class InfraccionesService {
 
-  infracciones:Array<any>
+  private infracciones:Array<any>
   constructor() { 
     this.infracciones = [ 
       { "fecha": "2019-05-01", "detalles":{ "modelo": "Ford Ka", "calle": "Riobamba 2123" }, "velocidad": 100 , "patente": "AA 456 AA" },
