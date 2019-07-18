@@ -5,6 +5,6 @@
     <span> Patente: {{ detalle?.patente }} </span>
     
     <hr class="my-4">
-        Modelo: {{ detalle?.detalles.modelo | mayuscula }} <br>
-        Calle: {{ detalle?.detalles.calle | mayuscula }}
+        Modelo: {{ detalle?.detalles?.modelo | mayuscula }} <br>
+        Calle: {{ detalle?.detalles?.calle | mayuscula }}
 </div>
