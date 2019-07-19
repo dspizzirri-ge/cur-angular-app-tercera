@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MayusculaPipe implements PipeTransform {
 
   transform(value: string, args?: any): any {
-    return value? value.toUpperCase():value;
+    return "Que miras?"
   }
 
 }

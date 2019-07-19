@@ -1,9 +1,8 @@
 <div class="container row">
   <div class="col-6">
     <label for="limite"> Limite velocidad </label>
-    <input name="limite" [(ngModel)]="limite" type="number">
+    <input name="limite" type="number">
 
-    <app-detalle [detalle]="detalleRegistro" ></app-detalle>
   </div>
 
   <div class="col-6">
@@ -17,19 +16,18 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let registro of datos; let i = index"
-        [ngClass]="{
-                'text-danger':registro.velocidad >= limite,
-                'text-warning':registro.velocidad > (limite - limite*0.15)
+        <tr *ngFor="let registro of datos; let i = index" [ngClass]="{
+                'text-danger':registro.velocidad >= 100,
+                'text-warning':registro.velocidad > 85
                         }" (click)="verDetalle(registro)">
-        <ng-container *ngIf="registro.velocidad >= (limite - limite*0.15)">    
-              <th scope="row">{{ i }}</th>
-              <td>{{ registro.fecha | date: 'mediumDate' }}</td>
-              <td>{{ registro.velocidad }} Km/h</td>
-              <td>{{ registro.patente }}</td> 
-        </ng-container>       
+          <ng-container *ngIf="registro.velocidad >= 85">
+            <th scope="row">{{ i }}</th>
+            <td>{{ registro.fecha | date: 'mediumDate' }}</td>
+            <td>{{ registro.velocidad }} Km/h</td>
+            <td>{{ registro.patente }}</td>
+          </ng-container>
         </tr>
       </tbody>
-    </table>    
+    </table>
   </div>
 </div>
