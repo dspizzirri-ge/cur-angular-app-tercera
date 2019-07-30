@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let registro of datos; let i = index" 
-        [ngClass]="categorizarLinea(registro, 81, 100)" >
+        [ngClass]="{}" >
       <th scope="row">{{ i }}</th>
       <td>{{ registro.fecha }}</td>
       <td>{{ registro.modelo }}</td>
