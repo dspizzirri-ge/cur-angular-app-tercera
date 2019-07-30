@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { InfraccionesService } from '../infracciones.service';
 
 @Component({
   selector: 'app-tabla',
@@ -13,7 +12,7 @@ export class TablaComponent implements OnInit {
   limite:number = 0;
   detalleRegistro:any;
 
-  constructor(private infracciones: InfraccionesService) { 
+  constructor(private infracciones: any) { 
     
     console.log("Constructor"); 
     this.datos = this.infracciones.getInfracciones()
