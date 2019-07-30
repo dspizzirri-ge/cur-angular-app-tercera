@@ -21,7 +21,7 @@
         [ngClass]="{
                 'text-danger':registro.velocidad >= limite,
                 'text-warning':registro.velocidad > (limite - limite*0.15)
-                        }" (click)="verDetalle(registro)">
+                        }">
         <ng-container *ngIf="registro.velocidad >= (limite - limite*0.15)">    
               <th scope="row">{{ i }}</th>
               <td>{{ registro.fecha }}</td>
