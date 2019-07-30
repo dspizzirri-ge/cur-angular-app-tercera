@@ -1,4 +1,12 @@
-<table class="table">
+<hr>
+<div class="form-group">
+  <label for="limite"> Limite: </label>
+  <input type="number" name="limite" id="limite" [(ngModel)]="limite">
+</div>
+
+<hr>
+
+ <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -11,10 +19,10 @@
   <tbody>
     <tr *ngFor="let registro of datos; let i = index"
     [ngClass]="{
-            'text-danger':registro.velocidad >= 100,
-            'text-warning':registro.velocidad > 80 && registro.velocidad &lt; 100
+            'text-danger':registro.velocidad >= limite,
+            'text-warning':registro.velocidad > (limite-limite*0.15) && registro.velocidad &lt; limite
                     }" >
-    <ng-container *ngIf="registro.velocidad >= 80">    
+    <ng-container *ngIf="registro.velocidad >= (limite-limite*0.15)">    
           <th scope="row">{{ i }}</th>
           <td>{{ registro.fecha }}</td>
           <td>{{ registro.modelo }}</td>

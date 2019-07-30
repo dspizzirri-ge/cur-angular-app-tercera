@@ -8,6 +8,8 @@ import { element } from '@angular/core/src/render3';
 })
 export class TablaComponent implements OnInit {
 
+  limite:number = 0;
+
   datos:Array<any> = [ 
     { "fecha": "2019-05-01", "modelo": "Ford Ka" , "velocidad": 100 , "patente": "AA 456 AA" },
     { "fecha": "2019-06-01", "modelo": "Toyota Etios" , "velocidad": 110 , "patente": "PA 456 AB" },
