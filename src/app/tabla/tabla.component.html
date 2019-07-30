@@ -10,10 +10,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let registro of datos; let i = index" 
-        [ngClass]="{
-            'text-danger':registro.velocidad >= 100,
-            'text-warning':registro.velocidad > 80 && registro.velocidad &lt; 100
-                    }" >
+        [ngClass]="categorizarLinea(registro, 81, 100)" >
       <th scope="row">{{ i }}</th>
       <td>{{ registro.fecha }}</td>
       <td>{{ registro.modelo }}</td>

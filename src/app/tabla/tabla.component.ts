@@ -31,6 +31,14 @@ export class TablaComponent implements OnInit {
     console.log("Constructor"); 
   }
 
+  categorizarLinea(registro:any, limiteInf:number, limiteSup:number):string{
+    if(registro.velocidad >= limiteSup)
+      return 'text-danger';
+
+    if(registro.velocidad >= limiteInf && registro.velocidad < limiteSup)
+      return 'text-warning';
+  }
+
   ngOnInit() {
     console.log("ngOnInit");
   }
