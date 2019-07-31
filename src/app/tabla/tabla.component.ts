@@ -20,14 +20,7 @@ export class TablaComponent implements OnInit {
 
     console.log("Constructor"); 
     this.infracciones.getInfracciones()
-      .subscribe(data => {
-        data.sort((a:Infracciones,b:Infracciones)=> {return a.velocidad > b.velocidad? -1:1});
-        this.datos = new Array();
-        data.forEach(element => {
-          const infraccion = new Infraccion(element.fecha, element.detalles, element.velocidad, element.patente);
-          this.datos.push(infraccion);
-        });
-      });
+      .subscribe(data => {});
   }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Infraccion } from './infraccion';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,6 @@ export class InfraccionesService {
   }
 
   getInfracciones():Observable<any>{
-    return this.http.get("../assets/infracciones/072019/data.json");
+    return of([]);
   }
 }
