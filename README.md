@@ -1,3 +1,7 @@
+# Update proyect
+ng update @angular/cli @angular/core
+npm update
+
 # AppTercera
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
