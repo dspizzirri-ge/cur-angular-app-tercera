@@ -1,5 +1,6 @@
 # Update proyect
 ng update @angular/cli @angular/core
+rm -f package-lock.json
 npm update
 
 # AppTercera
