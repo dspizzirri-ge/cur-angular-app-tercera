@@ -1,5 +1,5 @@
 import { AppPage } from './app.po';
-import { browser, logging } from 'protractor';
+import { browser, logging, ElementFinder, ElementArrayFinder } from 'protractor';
 
 describe('workspace-project App', () => {
   let page: AppPage;
@@ -8,9 +8,20 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('Deberia mostrar el detalle de la fila 1 al hacer click sobre ella', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to app-tercera!');
+
+    const limite: ElementFinder = page.getInputModel("limite");
+    limite.sendKeys("100");
+
+    const tabla: ElementArrayFinder = page.getTabla();
+    tabla.get(1).click();
+
+    expect(page.getById("detalle-fecha").getText()).toEqual("Fecha: 2019-08-10");
+    expect(page.getById("detalle-velocidad").getText()).toEqual("Velocidad: 150");
+    expect(page.getById("detalle-modelo").getText()).toEqual("Modelo: CHEVROLET ONIX");
+    expect(page.getById("detalle-patente").getText()).toEqual("Patente: MA 456 AD");
+    expect(page.getById("detalle-calle").getText()).toEqual("Calle: RIOBAMBA 2123");
   });
 
   afterEach(async () => {
