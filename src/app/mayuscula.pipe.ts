@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class MayusculaPipe implements PipeTransform {
 
   transform(value: string, args?: any): any {
-    return value.toUpperCase();
+    if (args && typeof args === 'number') {
+      return value.substring(0, args).toUpperCase() + value.substr(args);
+    } else {
+      return value.toUpperCase();
+    }
   }
 
 }
