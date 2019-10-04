@@ -7,5 +7,5 @@
     <hr class="my-4">
     <span *ngIf="detalle" id="detalle-modelo"> Modelo: {{ detalle?.detalles.modelo | mayuscula }} </span>
     <br>
-    <span *ngIf="detalle" id="detalle-calle"> Calle: {{ detalle?.detalles.calle | mayuscula }} </span>
+    <span *ngIf="detalle" id="detalle-calle"> Calle: {{ detalle?.detalles.calle | mayuscula:2 }} </span>
 </div>
