@@ -3,8 +3,8 @@ import { TablaComponent } from './tabla.component';
 import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MayusculaPipe } from '../mayuscula.pipe';
-import { InfraccionesService } from '../infracciones.service';
+import { MayusculaPipe } from '../pipes/mayuscula.pipe';
+import { InfraccionesService } from '../servicios/infracciones.service';
 import { Observable, of } from 'rxjs';
 
 class InfraccionesServiceStub{

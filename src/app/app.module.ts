@@ -7,7 +7,7 @@ import { TablaComponent } from './tabla/tabla.component';
 
 import { FormsModule } from '@angular/forms';
 import { DetalleComponent } from './detalle/detalle.component';
-import { MayusculaPipe } from './mayuscula.pipe';
+import { MayusculaPipe } from './pipes/mayuscula.pipe';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { InfraccionesService } from '../infracciones.service';
-import { Infracciones } from '../infracciones';
-import { DetalleInfracciones } from '../detalle-infracciones';
-import { Infraccion } from '../infraccion';
+import { InfraccionesService } from '../servicios/infracciones.service';
+import { Infracciones } from '../interfaces/infracciones';
+import { DetalleInfracciones } from '../interfaces/detalle-infracciones';
+import { Infraccion } from '../modelos/infraccion';
 
 @Component({
   selector: 'app-tabla',
@@ -11,17 +11,17 @@ import { Infraccion } from '../infraccion';
 })
 export class TablaComponent implements OnInit {
 
-  datos:Array<Infracciones>
-  
-  limite:number = 0;
-  detalleRegistro:DetalleInfracciones;
+  datos: Array<Infracciones>
 
-  constructor(private infracciones: InfraccionesService) { 
+  limite: number = 0;
+  detalleRegistro: DetalleInfracciones;
 
-    console.log("Constructor"); 
+  constructor(private infracciones: InfraccionesService) {
+
+    console.log("Constructor");
     this.infracciones.getInfracciones()
       .subscribe(data => {
-        data.sort((a:Infracciones,b:Infracciones)=> {return a.velocidad > b.velocidad? -1:1});
+        data.sort((a: Infracciones, b: Infracciones) => { return a.velocidad > b.velocidad ? -1 : 1 });
         this.datos = new Array();
         data.forEach(element => {
           const infraccion = new Infraccion(element.fecha, element.detalles, element.velocidad, element.patente);
@@ -31,7 +31,7 @@ export class TablaComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
     console.log("ngOnInit");
   }
 
